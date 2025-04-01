@@ -321,3 +321,16 @@ npm i -D vuepress-theme-hope
 <iframe src="https://ecosystem.vuejs.press/zh/plugins/markdown/revealjs/demo.html" width="100%" height="420"/>
 
 - [查看详情](https://theme-hope.vuejs.press/zh/guide/markdown/content/revealjs.html)
+
+#### table
+
+| **对比项**             | **HashMap**      | **LinkedHashMap** | **ConcurrentHashMap** |
+|---------------------|------------------|-------------------|-----------------------|
+| **底层数据结构**          | 哈希表（数组 + 链表/红黑树） | 哈希表 + 双向链表        | 哈希表（分段锁、CAS 机制）       |
+| **key 是否有序**        | ❌ 无序             | ✅ 按插入顺序排序         | ❌ 无序                  |
+| **时间复杂度**           | O(1) 平均，O(n) 最坏  | O(1) 平均，O(n) 最坏   | O(1) 平均，O(n) 最坏       |
+| **是否允许 null key**   | ✅ 允许             | ✅ 允许              | ❌ 不允许                 |
+| **是否允许 null value** | ✅ 允许             | ✅ 允许              | ❌ 不允许                 |
+| **线程安全**            | ❌ 非线程安全          | ❌ 非线程安全           | ✅ 线程安全                |
+| **适用场景**            | 快速查找、无序存储、大量数据   | 需要按插入顺序遍历的场景      | 并发环境下的高效哈希映射          |
+| **主要应用**            | 缓存、映射查找、对象存储     | LRU 缓存、访问顺序存储     | 高并发场景，如缓存、线程池         |
